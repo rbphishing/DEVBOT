@@ -6,7 +6,7 @@ from langchain.prompts import ChatPromptTemplate
 import speech_recognition as sr
 
 # Configuração da chave de API
-os.environ["GROQ_API_KEY"] = "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"  # Substitua pela sua chave
+os.environ["GROQ_API_KEY"] = "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"  # api for aplication lhama 
 chat = ChatGroq(model="llama-3.1-8b-instant")
 
 # Configuração do Flask
