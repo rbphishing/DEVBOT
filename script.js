@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
         messagesContainer.scrollTop = messagesContainer.scrollHeight; // Scroll automático
     }
 
-    // Envia mensagem ao servidor
+    // Envia mensagem ao servidor (simulação)
     async function sendMessage() {
         const userMessage = userInput.value.trim();
         if (userMessage === "") return;
@@ -21,23 +21,13 @@ document.addEventListener("DOMContentLoaded", () => {
         userInput.value = ""; // Limpa o campo de input
 
         try {
-            // URL dinâmica para o backend
-            const url = "http://127.0.0.1:5000/chat";
-
-            const response = await fetch(url, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ message: userMessage })
-            });
-
-            if (!response.ok) {
-                throw new Error(`Erro no servidor: ${response.status} ${response.statusText}`);
-            }
-
-            const data = await response.json();
-            addMessage("bot", data.reply);
+            // Simula a resposta do bot (aqui você pode conectar ao backend)
+            const botReply = "Bot: " + userMessage.split("").reverse().join(""); // Resposta simulada
+            setTimeout(() => {
+                addMessage("bot", botReply);
+            }, 1000);
         } catch (error) {
-            addMessage("bot", "Desculpe, ocorreu um erro ao conectar ao servidor.");
+            addMessage("bot", "Desculpe, ocorreu um erro.");
             console.error("Erro:", error);
         }
     }
@@ -46,27 +36,5 @@ document.addEventListener("DOMContentLoaded", () => {
     sendButton.addEventListener("click", sendMessage);
     userInput.addEventListener("keypress", (e) => {
         if (e.key === "Enter") sendMessage();
-    });
-});
-
-
-
-
-
-// Toggle do menu lateral
-document.addEventListener("DOMContentLoaded", () => {
-    const sidebar = document.querySelector(".sidebar");
-    const button = document.getElementById("animateButton");
-
-    // Animação para abrir o menu
-    sidebar.classList.add("active");
-
-    // Efeito ao clicar no botão
-    button.addEventListener("click", () => {
-        const section = document.querySelector(".section");
-        section.classList.add("animated");
-
-        // Alterar cor do botão após animação
-        button.style.backgroundColor = "#2ecc71";
     });
 });
