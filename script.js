@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const userInput = document.getElementById("userInput");
     const sendButton = document.getElementById("sendButton");
     const messagesContainer = document.getElementById("messages");
+    const newConversationButton = document.getElementById("newConversation");
 
     // Adiciona mensagem no chatbox
     function addMessage(sender, text) {
@@ -32,9 +33,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // Função para criar uma nova conversa
+    function newConversation() {
+        messagesContainer.innerHTML = ""; // Limpa as mensagens
+    }
+
     // Eventos
     sendButton.addEventListener("click", sendMessage);
     userInput.addEventListener("keypress", (e) => {
         if (e.key === "Enter") sendMessage();
     });
+    
+    // Evento para nova conversa
+    newConversationButton.addEventListener("click", newConversation);
 });
