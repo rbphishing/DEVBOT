@@ -94,10 +94,15 @@ header h1 {
 
 /* Caixa de Chat */
 .chatbox-container {
-    margin-top: 20px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%; /* Posiciona no meio vertical */
+    left: 50%; /* Posiciona no meio horizontal */
+    transform: translate(-50%, -50%); /* Ajusta para centralizar exatamente */
 }
 
 .chatbox {
