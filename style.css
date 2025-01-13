@@ -7,8 +7,8 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #121212; /* Fundo escuro */
-    color: #E0E0E0; /* Texto claro para contraste */
+    background-color: #121212; /* Fundo preto */
+    color: #ffffff; /* Texto branco */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,7 +18,7 @@ body {
 
 /* Container principal */
 .chat-container {
-    background-color: #1e1e1e; /* Fundo escuro sólido */
+    background-color: #1a1a1a; /* Fundo preto sólido */
     border-radius: 8px;
     width: 100%;
     max-width: 400px;
@@ -27,12 +27,13 @@ body {
     flex-direction: column;
     justify-content: space-between;
     height: 80vh;
+    border: 1px solid #333; /* Bordas minimalistas */
 }
 
 /* Título */
 h1 {
     text-align: center;
-    color: #00bcd4;
+    color: #ffffff; /* Texto branco */
     font-size: 20px;
     margin-bottom: 16px;
     text-transform: uppercase;
@@ -45,8 +46,10 @@ h1 {
     overflow-y: auto;
     margin-bottom: 16px;
     padding: 8px;
-    background-color: #333;
+    background-color: #000000; /* Preto puro */
     border-radius: 6px;
+    border: 1px solid #333; /* Bordas minimalistas */
+    color: #ffffff; /* Texto branco */
 }
 
 /* Mensagens */
@@ -57,20 +60,22 @@ h1 {
     word-wrap: break-word;
     font-size: 14px;
     margin-bottom: 8px;
+    background-color: #1a1a1a; /* Fundo cinza escuro */
+    border: 1px solid #333; /* Bordas finas */
 }
 
 /* Mensagem do usuário */
 .user-message {
-    background-color: #00bcd4;
+    background-color: #ffffff; /* Fundo branco */
+    color: #000000; /* Texto preto */
     align-self: flex-end;
-    color: #fff;
 }
 
 /* Mensagem da IA */
 .bot-message {
-    background-color: #424242;
+    background-color: #333333; /* Fundo cinza médio */
+    color: #ffffff; /* Texto branco */
     align-self: flex-start;
-    color: #fff;
 }
 
 /* Input e botão */
@@ -84,24 +89,31 @@ h1 {
     flex: 1;
     padding: 12px;
     border-radius: 6px;
-    border: none;
-    background-color: #333;
-    color: #fff;
+    border: 1px solid #333; /* Bordas minimalistas */
+    background-color: #000000; /* Preto puro */
+    color: #ffffff; /* Texto branco */
     font-size: 14px;
+}
+
+#userInput:focus {
+    background-color: #1a1a1a; /* Cinza escuro */
+    outline: none;
+    border: 1px solid #ffffff; /* Destaque branco */
 }
 
 #sendButton {
     padding: 10px 14px;
-    background-color: #00bcd4;
+    background-color: #ffffff; /* Branco */
     border: none;
     border-radius: 6px;
-    color: white;
+    color: #000000; /* Texto preto */
     font-size: 14px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 #sendButton:hover {
-    background-color: #008c9e;
+    background-color: #e0e0e0; /* Cinza claro no hover */
 }
 
 /* Responsividade */
