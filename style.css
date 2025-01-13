@@ -101,6 +101,7 @@ header h1 {
 /* Caixa de Chat */
 .chatbox-container {
     display: flex;
+    flex-direction: column; /* Organiza os itens verticalmente */
     justify-content: center; /* Centraliza horizontalmente */
     align-items: center; /* Centraliza verticalmente */
     width: 100%;
