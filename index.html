@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Interativa com Menu Lateral</title>
+    <title>Página com Chat e Menu Lateral</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="wrapper">
+        <!-- Menu Lateral -->
         <nav class="sidebar">
             <div class="sidebar-header">
                 <h2>Menu Lateral</h2>
@@ -19,16 +20,24 @@
                 <li><a href="#">Contato</a></li>
             </ul>
         </nav>
+
+        <!-- Conteúdo Principal -->
         <main class="content">
             <header>
                 <h1>Bem-vindo à Página Interativa!</h1>
             </header>
-            <section class="section">
-                <p>Esta é uma página com animações e um menu lateral interativo. Explore os menus!</p>
-                <button id="animateButton">Clique para Animar</button>
+            <section class="chatbox-container">
+                <div class="chatbox">
+                    <div class="messages" id="messages"></div>
+                    <div class="input-container">
+                        <input type="text" id="userInput" placeholder="Digite sua mensagem...">
+                        <button id="sendButton">Enviar</button>
+                    </div>
+                </div>
             </section>
         </main>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
