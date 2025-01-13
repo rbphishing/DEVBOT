@@ -6,147 +6,123 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    background: linear-gradient(-45deg, #121212, #1a1a1a, #000000, #1a1a1a); /* Fundo animado */
-    background-size: 400% 400%;
-    animation: gradientBackground 10s ease infinite; /* Animação do gradiente */
-    color: #ffffff; /* Texto branco */
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+    min-height: 100vh;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow-x: hidden;
 }
 
-/* Animação do fundo */
-@keyframes gradientBackground {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-/* Container principal */
-.chat-container {
-    background-color: rgba(30, 30, 30, 0.95); /* Fundo semi-transparente */
-    border-radius: 12px;
+/* Wrapper principal */
+.wrapper {
+    display: flex;
     width: 100%;
-    max-width: 600px; /* Aumentei a largura */
+    height: 100%;
+}
+
+/* Menu lateral */
+.sidebar {
+    background-color: #333;
+    color: white;
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    left: -250px;
+    top: 0;
+    transition: left 0.3s ease;
+}
+
+.sidebar-header {
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 90vh; /* Ocupa quase toda a tela */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+    background-color: #444;
+    text-align: center;
+}
+
+.sidebar-menu {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar-menu li {
+    padding: 15px;
+    text-align: center;
+}
+
+.sidebar-menu li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar-menu li a:hover {
+    background-color: #555;
+}
+
+/* Animação do menu */
+.sidebar.active {
+    left: 0;
+}
+
+/* Conteúdo principal */
+.content {
+    margin-left: 250px;
+    padding: 20px;
+    flex: 1;
+    transition: margin-left 0.3s ease;
 }
 
 /* Título */
-h1 {
+header h1 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
     text-align: center;
-    color: #ffffff;
-    font-size: 24px;
-    margin-bottom: 16px;
-    text-transform: uppercase;
-    font-weight: 500;
 }
 
-/* Caixa de chat */
-#chatbox {
-    flex: 1;
-    overflow-y: auto;
-    margin-bottom: 16px;
-    padding: 16px; /* Aumentei o padding interno */
-    background-color: #000000;
+/* Seções */
+.section {
+    background-color: white;
+    padding: 20px;
     border-radius: 8px;
-    border: 1px solid #333; /* Bordas minimalistas */
-    color: #ffffff;
-    font-size: 16px; /* Texto maior */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
 }
 
-/* Mensagens */
-.message {
-    padding: 12px;
-    border-radius: 6px;
-    max-width: 90%; /* Mais espaço para mensagens longas */
-    word-wrap: break-word;
-    font-size: 14px;
-    margin-bottom: 8px;
-    background-color: #1a1a1a;
-    border: 1px solid #333;
+/* Efeito de fade-in */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
-/* Mensagem do usuário */
-.user-message {
-    background-color: #ffffff;
-    color: #000000;
-    align-self: flex-end;
-}
-
-/* Mensagem da IA */
-.bot-message {
-    background-color: #333333;
-    color: #ffffff;
-    align-self: flex-start;
-}
-
-/* Input e botão */
-.input-container {
-    display: flex;
-    gap: 12px; /* Espaçamento maior entre o input e o botão */
-    align-items: center;
-}
-
-#userInput {
-    flex: 1;
-    padding: 16px; /* Input maior */
-    border-radius: 8px;
-    border: 1px solid #333;
-    background-color: #000000;
-    color: #ffffff;
-    font-size: 16px;
-}
-
-#userInput:focus {
-    background-color: #1a1a1a;
-    outline: none;
-    border: 1px solid #ffffff;
-}
-
-#sendButton {
-    padding: 14px 18px; /* Botão maior */
-    background-color: #ffffff;
+/* Botão de animação */
+button {
+    background-color: #3498db;
+    color: white;
+    padding: 12px 24px;
     border: none;
     border-radius: 8px;
-    color: #000000;
-    font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-#sendButton:hover {
-    background-color: #e0e0e0;
+button:hover {
+    background-color: #2980b9;
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
-    .chat-container {
-        height: 85vh;
+    .sidebar {
+        width: 200px;
     }
 
-    h1 {
-        font-size: 20px;
+    .content {
+        margin-left: 200px;
     }
 
-    #userInput {
-        font-size: 14px;
-    }
-
-    #sendButton {
-        font-size: 14px;
+    header h1 {
+        font-size: 28px;
     }
 }
