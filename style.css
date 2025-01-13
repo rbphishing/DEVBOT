@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #000000; /* Fundo preto */
+    background-color: #1a1a1a; /* Fundo escuro mais suave */
     color: white; /* Texto branco */
     display: flex;
     min-height: 100vh;
@@ -21,9 +21,10 @@ body {
     display: flex;
     width: 100%;
     height: 100%;
+    transition: all 0.3s ease;
 }
 
-/* Menu lateral */
+/* Menu Lateral */
 .sidebar {
     background-color: #222; /* Preto escuro */
     color: white;
@@ -32,7 +33,8 @@ body {
     position: fixed;
     left: -250px;
     top: 0;
-    transition: left 0.3s ease;
+    transition: left 0.3s ease, width 0.3s ease;
+    z-index: 1000; /* Coloca o menu acima do conteúdo */
 }
 
 .sidebar-header {
@@ -56,10 +58,12 @@ body {
     text-decoration: none;
     display: block;
     transition: background-color 0.3s ease;
+    font-size: 18px;
 }
 
 .sidebar-menu li a:hover {
     background-color: #444; /* Cinza médio */
+    border-radius: 4px;
 }
 
 /* Animação do menu */
@@ -67,12 +71,16 @@ body {
     left: 0;
 }
 
+.sidebar.active {
+    width: 250px;
+}
+
 /* Conteúdo principal */
 .content {
     margin-left: 250px;
     padding: 20px;
     flex: 1;
-    transition: margin-left 0.3s ease;
+    transition: margin-left 0.3s ease, padding-left 0.3s ease;
 }
 
 /* Título */
@@ -81,6 +89,7 @@ header h1 {
     color: #ffffff;
     margin-bottom: 20px;
     text-align: center;
+    transition: font-size 0.3s ease;
 }
 
 /* Caixa de Chat */
@@ -115,6 +124,7 @@ header h1 {
     margin-bottom: 10px;
     border-radius: 8px;
     max-width: 80%;
+    word-wrap: break-word;
 }
 
 .user-message {
@@ -131,6 +141,7 @@ header h1 {
 .input-container {
     display: flex;
     gap: 10px;
+    margin-top: 10px;
 }
 
 #userInput {
@@ -140,6 +151,12 @@ header h1 {
     border: 1px solid #555; /* Borda cinza claro */
     background-color: #222; /* Fundo escuro */
     color: white;
+    transition: border-color 0.3s ease;
+}
+
+#userInput:focus {
+    outline: none;
+    border-color: #666; /* Destaque ao focar no input */
 }
 
 #sendButton {
@@ -149,10 +166,15 @@ header h1 {
     border: none;
     border-radius: 8px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 #sendButton:hover {
     background-color: #555; /* Botão cinza claro */
+}
+
+#sendButton:active {
+    background-color: #666; /* Botão pressionado */
 }
 
 /* Responsividade */
@@ -163,9 +185,22 @@ header h1 {
 
     .content {
         margin-left: 200px;
+        padding-left: 20px;
     }
 
     header h1 {
         font-size: 28px;
+    }
+
+    .chatbox {
+        padding: 15px;
+    }
+
+    #userInput {
+        padding: 8px;
+    }
+
+    #sendButton {
+        padding: 8px 12px;
     }
 }
