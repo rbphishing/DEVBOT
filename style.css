@@ -7,7 +7,9 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #121212; /* Fundo preto */
+    background: linear-gradient(-45deg, #121212, #1a1a1a, #000000, #1a1a1a); /* Fundo animado */
+    background-size: 400% 400%;
+    animation: gradientBackground 10s ease infinite; /* Animação do gradiente */
     color: #ffffff; /* Texto branco */
     display: flex;
     justify-content: center;
@@ -16,25 +18,38 @@ body {
     margin: 0;
 }
 
+/* Animação do fundo */
+@keyframes gradientBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 /* Container principal */
 .chat-container {
-    background-color: #1a1a1a; /* Fundo preto sólido */
-    border-radius: 8px;
+    background-color: rgba(30, 30, 30, 0.95); /* Fundo semi-transparente */
+    border-radius: 12px;
     width: 100%;
-    max-width: 400px;
-    padding: 16px;
+    max-width: 600px; /* Aumentei a largura */
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 80vh;
-    border: 1px solid #333; /* Bordas minimalistas */
+    height: 90vh; /* Ocupa quase toda a tela */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
 }
 
 /* Título */
 h1 {
     text-align: center;
-    color: #ffffff; /* Texto branco */
-    font-size: 20px;
+    color: #ffffff;
+    font-size: 24px;
     margin-bottom: 16px;
     text-transform: uppercase;
     font-weight: 500;
@@ -45,92 +60,93 @@ h1 {
     flex: 1;
     overflow-y: auto;
     margin-bottom: 16px;
-    padding: 8px;
-    background-color: #000000; /* Preto puro */
-    border-radius: 6px;
+    padding: 16px; /* Aumentei o padding interno */
+    background-color: #000000;
+    border-radius: 8px;
     border: 1px solid #333; /* Bordas minimalistas */
-    color: #ffffff; /* Texto branco */
+    color: #ffffff;
+    font-size: 16px; /* Texto maior */
 }
 
 /* Mensagens */
 .message {
-    padding: 10px;
+    padding: 12px;
     border-radius: 6px;
-    max-width: 80%;
+    max-width: 90%; /* Mais espaço para mensagens longas */
     word-wrap: break-word;
     font-size: 14px;
     margin-bottom: 8px;
-    background-color: #1a1a1a; /* Fundo cinza escuro */
-    border: 1px solid #333; /* Bordas finas */
+    background-color: #1a1a1a;
+    border: 1px solid #333;
 }
 
 /* Mensagem do usuário */
 .user-message {
-    background-color: #ffffff; /* Fundo branco */
-    color: #000000; /* Texto preto */
+    background-color: #ffffff;
+    color: #000000;
     align-self: flex-end;
 }
 
 /* Mensagem da IA */
 .bot-message {
-    background-color: #333333; /* Fundo cinza médio */
-    color: #ffffff; /* Texto branco */
+    background-color: #333333;
+    color: #ffffff;
     align-self: flex-start;
 }
 
 /* Input e botão */
 .input-container {
     display: flex;
-    gap: 8px;
+    gap: 12px; /* Espaçamento maior entre o input e o botão */
     align-items: center;
 }
 
 #userInput {
     flex: 1;
-    padding: 12px;
-    border-radius: 6px;
-    border: 1px solid #333; /* Bordas minimalistas */
-    background-color: #000000; /* Preto puro */
-    color: #ffffff; /* Texto branco */
-    font-size: 14px;
+    padding: 16px; /* Input maior */
+    border-radius: 8px;
+    border: 1px solid #333;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 16px;
 }
 
 #userInput:focus {
-    background-color: #1a1a1a; /* Cinza escuro */
+    background-color: #1a1a1a;
     outline: none;
-    border: 1px solid #ffffff; /* Destaque branco */
+    border: 1px solid #ffffff;
 }
 
 #sendButton {
-    padding: 10px 14px;
-    background-color: #ffffff; /* Branco */
+    padding: 14px 18px; /* Botão maior */
+    background-color: #ffffff;
     border: none;
-    border-radius: 6px;
-    color: #000000; /* Texto preto */
-    font-size: 14px;
+    border-radius: 8px;
+    color: #000000;
+    font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 #sendButton:hover {
-    background-color: #e0e0e0; /* Cinza claro no hover */
+    background-color: #e0e0e0;
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
     .chat-container {
-        height: 70vh;
+        height: 85vh;
     }
 
     h1 {
-        font-size: 18px;
+        font-size: 20px;
     }
 
     #userInput {
-        font-size: 12px;
+        font-size: 14px;
     }
 
     #sendButton {
-        font-size: 12px;
+        font-size: 14px;
     }
 }
