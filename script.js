@@ -48,3 +48,25 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.key === "Enter") sendMessage();
     });
 });
+
+
+
+
+
+// Toggle do menu lateral
+document.addEventListener("DOMContentLoaded", () => {
+    const sidebar = document.querySelector(".sidebar");
+    const button = document.getElementById("animateButton");
+
+    // Animação para abrir o menu
+    sidebar.classList.add("active");
+
+    // Efeito ao clicar no botão
+    button.addEventListener("click", () => {
+        const section = document.querySelector(".section");
+        section.classList.add("animated");
+
+        // Alterar cor do botão após animação
+        button.style.backgroundColor = "#2ecc71";
+    });
+});
