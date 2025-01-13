@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const userInput = document.getElementById("userInput");
     const sendButton = document.getElementById("sendButton");
     const messagesContainer = document.getElementById("messages");
-    const newConversationButton = document.getElementById("newConversation");
 
     // Adiciona mensagem no chatbox
     function addMessage(sender, text) {
@@ -13,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
         messagesContainer.scrollTop = messagesContainer.scrollHeight; // Scroll automático
     }
 
-    // Envia mensagem ao servidor (simulação)
+    // Envia mensagem ao servidor
     async function sendMessage() {
         const userMessage = userInput.value.trim();
         if (userMessage === "") return;
@@ -22,20 +21,25 @@ document.addEventListener("DOMContentLoaded", () => {
         userInput.value = ""; // Limpa o campo de input
 
         try {
-            // Simula a resposta do bot (aqui você pode conectar ao backend)
-            const botReply = "Bot: " + userMessage.split("").reverse().join(""); // Resposta simulada
-            setTimeout(() => {
-                addMessage("bot", botReply);
-            }, 1000);
+            // URL dinâmica para o backend
+            const url = "http://127.0.0.1:5000/chat";
+
+            const response = await fetch(url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: userMessage })
+            });
+
+            if (!response.ok) {
+                throw new Error(`Erro no servidor: ${response.status} ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            addMessage("bot", data.reply);
         } catch (error) {
-            addMessage("bot", "Desculpe, ocorreu um erro.");
+            addMessage("bot", "Desculpe, ocorreu um erro ao conectar ao servidor.");
             console.error("Erro:", error);
         }
-    }
-
-    // Função para criar uma nova conversa
-    function newConversation() {
-        messagesContainer.innerHTML = ""; // Limpa as mensagens
     }
 
     // Eventos
@@ -43,7 +47,4 @@ document.addEventListener("DOMContentLoaded", () => {
     userInput.addEventListener("keypress", (e) => {
         if (e.key === "Enter") sendMessage();
     });
-    
-    // Evento para nova conversa
-    newConversationButton.addEventListener("click", newConversation);
 });
